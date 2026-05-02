@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@400;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  
+  --color-bg: #050505;
+  --color-surface: rgba(255, 255, 255, 0.03);
+  --color-text-main: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.5);
+
+  --animate-float-pill: float-pill linear infinite;
+
+  @keyframes float-pill {
+    0% { transform: translate(0, 0) rotate(var(--rot)); }
+    50% { transform: translate(2vw, 3vh) rotate(calc(var(--rot) + 3deg)); }
+    100% { transform: translate(-1vw, -2vh) rotate(calc(var(--rot) - 2deg)); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-text-main font-sans selection:bg-indigo-900 selection:text-white antialiased;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-linear-to-r from-[#c4b5fd] via-[#a78bfa] via-[#fbcfe8] to-[#fecdd3] bg-clip-text text-transparent;
+  }
+  
+  .glass-header {
+    @apply bg-[rgba(5,5,5,0.4)] backdrop-blur-3xl border-b border-white/5;
+  }
+
+  .fashion-card {
+    @apply bg-white/3 border border-white/5 backdrop-blur-xl transition-all duration-500 ease-out hover:bg-white/6 hover:border-white/10 hover:-translate-y-1;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+}
